@@ -1,0 +1,31 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.10.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+}
+
+group = 'com.mumtaz.aws'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', "Greenwich.SR4")
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	//implementation 'org.springframework.cloud:spring-cloud-starter-aws'
+    implementation 'com.amazonaws:aws-java-sdk-s3'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		mavenBom "com.amazonaws:aws-java-sdk-bom:1.11.228"
+	}
+}
